@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.swpu.cins.dao.DataRecordsDao">
+    <select id="getList" resultType="DataRecords">
+        SELECT upload_id, accept_id, upload_time, upload_num
+        FROM data_records
+        ORDER BY upload_time DESC
+        LIMIT #{limit}, #{offset}
+    </select>
+
+    <select id="getChart" resultType="DataRecords">
+        SELECT upload_time, upload_num
+        FROM data_records
+        WHERE upload_id = #{uploadId}
+    </select>
+
+    <select id="getAll" resultType="int">
+        SELECT count(*)
+        FROM data_records
+    </select>
+</mapper>

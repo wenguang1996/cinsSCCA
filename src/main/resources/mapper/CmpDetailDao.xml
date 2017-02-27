@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.swpu.cins.dao.CmpDetailDao">
+
+    <select id="getBehaviour" resultType="CmpDetail">
+        SELECT
+          det.cmp_id,
+          det.first_sys,
+          det.handin_time
+        FROM cmp_detail AS det
+        WHERE det.cmp_id = #{cmpId}
+    </select>
+
+    <select id="mapCount" resultType="CmpDetail">
+        SELECT
+          det.handin_time,
+          count(*) AS number
+        FROM cmp_detail AS det
+        WHERE first_sys = #{sysName}
+        GROUP BY det.handin_time
+    </select>
+
+    <select id="govChart" resultType="CmpDetail">
+        <![CDATA[
+        SELECT handin_time, count(*) AS number
+        FROM cmp_detail
+        WHERE first_sys = #{firstId}
+          and handin_time >= #{startTime}
+          and handin_time <= #{endTime}
+        GROUP BY handin_time
+        ]]>
+    </select>
+
+</mapper>

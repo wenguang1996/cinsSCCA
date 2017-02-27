@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.swpu.cins.dao.BaseInfoDao">
+    <select id="list" resultType="BaseInfo">
+        SELECT cmp_id, cmp_name, cmp_activity, cmp_employee, cmp_health, cmp_location, cmp_status, error_time, reason
+        FROM base_info
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="searchByName" resultType="BaseInfo">
+        SELECT cmp_id, cmp_name, cmp_location, cmp_employee, cmp_activity, cmp_health, cmp_status, error_time, reason
+        FROM base_info
+        WHERE cmp_name LIKE #{keyword}
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="countStatus" resultType="BaseInfo">
+        <![CDATA[
+        SELECT cmp_status, count(*) AS number
+        FROM base_info
+        WHERE error_time < #{time}
+        GROUP BY cmp_status
+        ]]>
+    </select>
+
+    <select id="getIdByName" resultType="BaseInfo">
+        SELECT cmp_id
+        FROM base_info
+        WHERE cmp_name = #{cmpName} AND cmp_location = #{cmpLocation}
+    </select>
+
+    <select id="countLocation" resultType="BaseInfo">
+        SELECT cmp_location, count(*) AS number
+        FROM base_info
+        GROUP BY cmp_location
+    </select>
+
+    <select id="countLocationStatus" resultType="BaseInfo">
+        <![CDATA[
+        SELECT cmp_status, count(*) AS number
+        FROM base_info
+        WHERE cmp_location = #{cmpLocation} AND error_time < #{time}
+        GROUP BY cmp_status
+        ]]>
+    </select>
+
+    <select id="getSum" resultType="int">
+        SELECT count(*) as number FROM base_info;
+    </select>
+
+    <select id="getInfoByName" resultType="BaseInfo">
+        SELECT cmp_id, cmp_name, cmp_location
+        FROM base_info
+        WHERE cmp_name = #{comName}
+    </select>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.swpu.cins.dao.ActionDao">
+    <select id="getLog" resultType="Action">
+        SELECT
+          cmp_id,
+          handin_time,
+          institution
+        FROM ${tableName} AS tab
+        WHERE tab.cmp_id = #{cmpId}
+    </select>
+
+    <select id="getCount" resultType="Action">
+        SELECT
+          cmp_id, count(*) AS number
+        FROM ${tableName}
+        WHERE cmp_id = #{cmpId}
+    </select>
+</mapper>

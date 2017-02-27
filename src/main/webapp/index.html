@@ -1,0 +1,268 @@
+<!DOCTYPE html><html><head><title>SCCA接口表</title><meta charset='utf-8'><link href='https://dn-maxiang.qbox.me/res-min/themes/marxico.css' rel='stylesheet'><style>
+.note-content , .note-content  div {font-size: 16px;}
+
+.note-content  {font-family: Monaco,微软雅黑, 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, Song, sans-serif;}
+</style></head><body><div id='preview-contents' class='note-content'>
+                        <div id="wmd-preview" class="preview-content"></div>
+                    <div id="wmd-preview-section-109" class="wmd-preview-section preview-content">
+
+</div><div id="wmd-preview-section-3782" class="wmd-preview-section preview-content">
+
+<h1 id="scca接口表">SCCA接口表</h1>
+
+<p>标签（空格分隔）： scca</p>
+
+<hr>
+
+<ul><li>响应数据结构 {“data” : #{ResponseData}, “success”: true|false, “errorMsg” : null|”msg”} <br>
+<ul>
+<li><code>data</code>中的内容为表中<code>Response Data</code>的内容</li>
+<li><code>success</code>表示请求是否成功</li>
+<li><code>errorMsg</code>表示请求失败的原因</li></ul></li>
+</ul>
+
+<table>
+<thead>
+<tr>
+  <th align="center">API</th>
+  <th align="center">METHOD</th>
+  <th align="center">Request Data</th>
+  <th align="center">Response Data</th>
+  <th align="center">explannation</th>
+  <th align="center">finish</th>
+  <th align="center">deprecated</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="center">/system/first/map</td>
+  <td align="center">GET</td>
+  <td align="center"></td>
+  <td align="center"><a href="#一级系统映射">一级系统映射</a></td>
+  <td align="center">获取一级系统映射</td>
+  <td align="center">Y</td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">/aim/map</td>
+  <td align="center">GET</td>
+  <td align="center"></td>
+  <td align="center">[“fapiao”,…]</td>
+  <td align="center">获取发票、缴税、年审、社保、投标这五个名称</td>
+  <td align="center"></td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">/company/list</td>
+  <td align="center">GET</td>
+  <td align="center">page(int)</td>
+  <td align="center"><a href="#企业信息列表">企业信息列表</a></td>
+  <td align="center">获取企业列表</td>
+  <td align="center">Y</td>
+  <td align="center">Y</td>
+</tr>
+<tr>
+  <td align="center">/company/count</td>
+  <td align="center">GET</td>
+  <td align="center">time(long)(时间戳，不是必须)</td>
+  <td align="center"><a href="#正异常企业数量">正异常企业数量</a></td>
+  <td align="center">获取所有正常、异常企业的数量</td>
+  <td align="center">Y</td>
+  <td align="center">Y</td>
+</tr>
+<tr>
+  <td align="center">/company/search</td>
+  <td align="center">GET</td>
+  <td align="center">page(int), query(String)</td>
+  <td align="center"><a href="#企业信息列表">企业信息列表</a></td>
+  <td align="center">搜索企业</td>
+  <td align="center">Y</td>
+  <td align="center">Y</td>
+</tr>
+<tr>
+  <td align="center">/company/behaviour</td>
+  <td align="center">GET</td>
+  <td align="center">id(int)</td>
+  <td align="center"><a href="#企业一级系统操作记录">企业一级系统操作记录</a></td>
+  <td align="center">获取企业与一级系统相关行为的折线图数据</td>
+  <td align="center">Y</td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">/company/behaviour/aim</td>
+  <td align="center">GET</td>
+  <td align="center">id(int), aim(String)</td>
+  <td align="center"><a href="#企业行为统计">企业行为统计</a></td>
+  <td align="center">获取企业与发票等五个行为相关的折线图数据</td>
+  <td align="center">Y</td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">/company/behaviour/count</td>
+  <td align="center">GET</td>
+  <td align="center">id(int)</td>
+  <td align="center"><a href="#企业行为总计">企业行为总计</a></td>
+  <td align="center">获取饼图与雷达图数据</td>
+  <td align="center">Y</td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">/location</td>
+  <td align="center">GET</td>
+  <td align="center"></td>
+  <td align="center"><a href="#区域企业数量列表">区域企业数量列表</a></td>
+  <td align="center">获取各区域企业数量</td>
+  <td align="center">Y</td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">/location/detail</td>
+  <td align="center">GET</td>
+  <td align="center">location(String), time(long)(时间戳，不必须)</td>
+  <td align="center"><a href="#区域正常与异常企业数量">区域正常与异常企业数量</a></td>
+  <td align="center">获取某区域正常、异常企业数量</td>
+  <td align="center">Y</td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">/government/list</td>
+  <td align="center">GET</td>
+  <td align="center">page(int)</td>
+  <td align="center"><a href="#政务分析表格数据">政务分析表格数据</a></td>
+  <td align="center">获取政务分析中的表数据</td>
+  <td align="center">Y</td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">/government/chart</td>
+  <td align="center">GET</td>
+  <td align="center">id(int)(一级系统id),time(时间戳，统计图按月显示)</td>
+  <td align="center"><a href="#政务分析折线图数据">政务分析折线图数据</a></td>
+  <td align="center">获取政务分析中的折线图数据</td>
+  <td align="center">Y</td>
+  <td align="center"></td>
+</tr>
+<tr>
+  <td align="center">/government/map</td>
+  <td align="center">GET</td>
+  <td align="center"></td>
+  <td align="center"><a href="#政务系统机构映射">政务系统机构映射</a></td>
+  <td align="center">获取数据中心映射列表</td>
+  <td align="center">Y</td>
+  <td align="center"></td>
+</tr>
+</tbody></table>
+
+
+<hr>
+
+<p>新加接口</p>
+
+<table>
+<thead>
+<tr>
+  <th align="center">API</th>
+  <th align="center">METHOD</th>
+  <th align="center">Request Data</th>
+  <th align="center">Response Data</th>
+  <th align="center">exlannation</th>
+  <th align="center">Done</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="center">/company/公司名称/list</td>
+  <td align="center">GET</td>
+  <td align="center"></td>
+  <td align="center">id, name, location</td>
+  <td align="center">使用公司全名查询</td>
+  <td align="center">Y</td>
+</tr>
+</tbody></table>
+
+
+<hr></div><div id="wmd-preview-section-111" class="wmd-preview-section preview-content">
+
+<h1 id="一级系统映射">一级系统映射</h1>
+
+</div><div id="wmd-preview-section-112" class="wmd-preview-section preview-content">
+
+<pre class="prettyprint with-line-number hljs-light"><code class="language-json hljs"><span class="hljs-comment line-number">1.</span>[{<br><span class="hljs-comment line-number">2.</span>  "<span class="hljs-attribute">id</span>" : <span class="hljs-value"><span class="hljs-number">1</span></span>,                 //一级系统id<br><span class="hljs-comment line-number">3.</span>  "<span class="hljs-attribute">name</span>" : <span class="hljs-value"><span class="hljs-string">"四川省人社"</span>     //系统名称<br><span class="hljs-comment line-number">4.</span></span>},...]<br></code></pre>
+
+</div><div id="wmd-preview-section-113" class="wmd-preview-section preview-content">
+
+<h1 id="企业信息列表">企业信息列表</h1>
+
+</div><div id="wmd-preview-section-114" class="wmd-preview-section preview-content">
+
+<pre class="prettyprint with-line-number hljs-light"><code class="language-json hljs"><span class="hljs-comment line-number">1.</span>{<br><span class="hljs-comment line-number">2.</span>  "<span class="hljs-attribute">comList</span>" : <span class="hljs-value">[{                       //企业列表信息<br><span class="hljs-comment line-number">3.</span>    "<span class="hljs-attribute">id</span>"        : <span class="hljs-value"><span class="hljs-number">12345</span></span>,            //公司id<br><span class="hljs-comment line-number">4.</span>    "<span class="hljs-attribute">name</span>"      : <span class="hljs-value"><span class="hljs-string">"新希望集团"</span></span>,       //公司名称<br><span class="hljs-comment line-number">5.</span>    "<span class="hljs-attribute">location</span>"  : <span class="hljs-value"><span class="hljs-string">"高新区"</span></span>,          //公司位置<br><span class="hljs-comment line-number">6.</span>    "<span class="hljs-attribute">status</span>"    : <span class="hljs-value"><span class="hljs-number">1</span></span>,                //公司经营状态，1为正常，0为异常<br><span class="hljs-comment line-number">7.</span>    "<span class="hljs-attribute">errortime</span>" : <span class="hljs-value"><span class="hljs-number">123</span>               //出现异常的时间戳，正常状态的时间戳为<span class="hljs-number">0</span><br><span class="hljs-comment line-number">8.</span>    <span class="hljs-string">"reason"</span>    : <span class="hljs-string">"balabala"</span>        //被标记为异常的原因<br><span class="hljs-comment line-number">9.</span>    <span class="hljs-string">"activity"</span>  : <span class="hljs-number">8</span></span>,                //公司活跃度<br><span class="hljs-comment line-number">10.</span>    "<span class="hljs-attribute">employee</span>"  : <span class="hljs-value"><span class="hljs-number">6</span></span>,                //公司人员流动度<br><span class="hljs-comment line-number">11.</span>    "<span class="hljs-attribute">health</span>"    : <span class="hljs-value"><span class="hljs-number">3</span></span>,                //公司员工医保报销数量<br><span class="hljs-comment line-number">12.</span>  },...]</span>,<br><span class="hljs-comment line-number">13.</span>  "<span class="hljs-attribute">pages</span>" : <span class="hljs-value"><span class="hljs-number">5</span>                       //总页数<br><span class="hljs-comment line-number">14.</span>  <span class="hljs-string">"sum"</span>   : <span class="hljs-number">48</span>                      //总共公司数<br><span class="hljs-comment line-number">15.</span></span>}<br></code></pre>
+
+</div><div id="wmd-preview-section-115" class="wmd-preview-section preview-content">
+
+<h1 id="正异常企业数量">正异常企业数量</h1>
+
+</div><div id="wmd-preview-section-116" class="wmd-preview-section preview-content">
+
+<pre class="prettyprint with-line-number hljs-light"><code class="language-json hljs"><span class="hljs-comment line-number">1.</span>{<br><span class="hljs-comment line-number">2.</span>  "<span class="hljs-attribute">normal</span>" : <span class="hljs-value"><span class="hljs-number">1262</span></span>,   //正常企业数量<br><span class="hljs-comment line-number">3.</span>  "<span class="hljs-attribute">error</span>"  : <span class="hljs-value"><span class="hljs-number">374</span>     //异常企业数量<br><span class="hljs-comment line-number">4.</span></span>}<br></code></pre>
+
+</div><div id="wmd-preview-section-117" class="wmd-preview-section preview-content">
+
+<h1 id="企业一级系统操作记录">企业一级系统操作记录</h1>
+
+</div><div id="wmd-preview-section-118" class="wmd-preview-section preview-content">
+
+<pre class="prettyprint with-line-number hljs-light"><code class="language-json hljs"><span class="hljs-comment line-number">1.</span>[<br><span class="hljs-comment line-number">2.</span>  {<br><span class="hljs-comment line-number">3.</span>    "<span class="hljs-attribute">id</span>"      : <span class="hljs-value"><span class="hljs-number">10000</span></span>,         //公司id<br><span class="hljs-comment line-number">4.</span>    "<span class="hljs-attribute">time</span>"    : <span class="hljs-value"><span class="hljs-number">123</span></span>,           //行为时间戳<br><span class="hljs-comment line-number">5.</span>    "<span class="hljs-attribute">sysId</span>"   : <span class="hljs-value"><span class="hljs-number">2</span></span>,             //行为对象一级系统id<br><span class="hljs-comment line-number">6.</span>  },...<br><span class="hljs-comment line-number">7.</span>]<br></code></pre>
+
+</div><div id="wmd-preview-section-119" class="wmd-preview-section preview-content">
+
+<h1 id="企业行为统计">企业行为统计</h1>
+
+</div><div id="wmd-preview-section-120" class="wmd-preview-section preview-content">
+
+<pre class="prettyprint with-line-number hljs-light"><code class="language-json hljs"><span class="hljs-comment line-number">1.</span>[<br><span class="hljs-comment line-number">2.</span>  {<br><span class="hljs-comment line-number">3.</span>    "<span class="hljs-attribute">date</span>"    : <span class="hljs-value"><span class="hljs-number">123</span></span>,               //行为时间戳<br><span class="hljs-comment line-number">4.</span>    "<span class="hljs-attribute">sysId</span>"   : <span class="hljs-value"><span class="hljs-number">2</span>                  //行为对象一级系统id<br><span class="hljs-comment line-number">5.</span>  </span>},...<br><span class="hljs-comment line-number">6.</span>]<br></code></pre>
+
+</div><div id="wmd-preview-section-121" class="wmd-preview-section preview-content">
+
+<h1 id="企业行为总计">企业行为总计</h1>
+
+</div><div id="wmd-preview-section-122" class="wmd-preview-section preview-content">
+
+<pre class="prettyprint with-line-number hljs-light"><code class="language-json hljs"><span class="hljs-comment line-number">1.</span>[<br><span class="hljs-comment line-number">2.</span>  {<br><span class="hljs-comment line-number">3.</span>    "<span class="hljs-attribute">name</span>"   : <span class="hljs-value"><span class="hljs-string">"fapiao"</span></span>,   //目的名称<br><span class="hljs-comment line-number">4.</span>    "<span class="hljs-attribute">number</span>" : <span class="hljs-value"><span class="hljs-number">25</span>          //次数<br><span class="hljs-comment line-number">5.</span>  </span>},...<br><span class="hljs-comment line-number">6.</span>]<br></code></pre>
+
+</div><div id="wmd-preview-section-123" class="wmd-preview-section preview-content">
+
+<h1 id="区域企业数量列表">区域企业数量列表</h1>
+
+</div><div id="wmd-preview-section-124" class="wmd-preview-section preview-content">
+
+<pre class="prettyprint with-line-number hljs-light"><code class="language-json hljs"><span class="hljs-comment line-number">1.</span>[<br><span class="hljs-comment line-number">2.</span>  {<br><span class="hljs-comment line-number">3.</span>    "<span class="hljs-attribute">name</span>"     : <span class="hljs-value"><span class="hljs-number">1</span></span>,     //区域名称<br><span class="hljs-comment line-number">4.</span>    "<span class="hljs-attribute">number</span>" : <span class="hljs-value"><span class="hljs-number">11</span>     //企业数量<br><span class="hljs-comment line-number">5.</span>  </span>},<br><span class="hljs-comment line-number">6.</span>  ...<br><span class="hljs-comment line-number">7.</span>]<br></code></pre>
+
+</div><div id="wmd-preview-section-125" class="wmd-preview-section preview-content">
+
+<h1 id="区域正常与异常企业数量">区域正常与异常企业数量</h1>
+
+</div><div id="wmd-preview-section-126" class="wmd-preview-section preview-content">
+
+<pre class="prettyprint with-line-number hljs-light"><code class="language-json hljs"><span class="hljs-comment line-number">1.</span>{<br><span class="hljs-comment line-number">2.</span>  "<span class="hljs-attribute">normal</span>"  : <span class="hljs-value"><span class="hljs-number">134</span></span>,         //该区域正常企业总数<br><span class="hljs-comment line-number">3.</span>  "<span class="hljs-attribute">error</span>"   : <span class="hljs-value"><span class="hljs-number">42</span></span>,          //该区域异常企业总数<br><span class="hljs-comment line-number">4.</span>}<br></code></pre>
+
+</div><div id="wmd-preview-section-127" class="wmd-preview-section preview-content">
+
+<h1 id="政务系统机构映射">政务系统机构映射</h1>
+
+</div><div id="wmd-preview-section-128" class="wmd-preview-section preview-content">
+
+<pre class="prettyprint with-line-number hljs-light"><code class="language-json hljs"><span class="hljs-comment line-number">1.</span>[{<br><span class="hljs-comment line-number">2.</span>  "<span class="hljs-attribute">id</span>"   : <span class="hljs-value"><span class="hljs-number">9</span><br><span class="hljs-comment line-number">3.</span>  <span class="hljs-string">"name"</span> : <span class="hljs-string">"成都市交管局信息中心"</span><br><span class="hljs-comment line-number">4.</span></span>},...]<br></code></pre>
+
+</div><div id="wmd-preview-section-129" class="wmd-preview-section preview-content">
+
+<h1 id="政务分析表格数据">政务分析表格数据</h1>
+
+</div><div id="wmd-preview-section-130" class="wmd-preview-section preview-content">
+
+<pre class="prettyprint with-line-number hljs-light"><code class="language-json hljs"><span class="hljs-comment line-number">1.</span><span class="hljs-string">"records"</span> : [{<br><span class="hljs-comment line-number">2.</span>  "<span class="hljs-attribute">uploadOrg</span>":<span class="hljs-value"><span class="hljs-string">"成都市地税局信息中心"</span></span>,   //上传单位名称<br><span class="hljs-comment line-number">3.</span>  "<span class="hljs-attribute">acceptOrg</span>":<span class="hljs-value"><span class="hljs-string">"大数据中心"</span></span>,            //接受单位名称<br><span class="hljs-comment line-number">4.</span>  "<span class="hljs-attribute">uploadTime</span>": <span class="hljs-value"><span class="hljs-number">1232143434</span></span>,          //上传时间戳<br><span class="hljs-comment line-number">5.</span>  "<span class="hljs-attribute">uploadNumber</span>": <span class="hljs-value"><span class="hljs-number">53378</span>              //上传数量<br><span class="hljs-comment line-number">6.</span></span>},...],<br><span class="hljs-comment line-number">7.</span><span class="hljs-string">"pages"</span>:<span class="hljs-number">4</span>,         //总页数<br><span class="hljs-comment line-number">8.</span><span class="hljs-string">"number"</span>:<span class="hljs-number">43</span>        //总记录数<br></code></pre>
+
+</div><div id="wmd-preview-section-131" class="wmd-preview-section preview-content">
+
+<h1 id="政务分析折线图数据">政务分析折线图数据</h1>
+
+</div><div id="wmd-preview-section-3588" class="wmd-preview-section preview-content">
+
+<pre class="prettyprint with-line-number hljs-light"><code class="language-json hljs"><span class="hljs-comment line-number">1.</span>[{<br><span class="hljs-comment line-number">2.</span>  "<span class="hljs-attribute">number</span>" : <span class="hljs-value"><span class="hljs-number">10</span></span>,      //上传量<br><span class="hljs-comment line-number">3.</span>  "<span class="hljs-attribute">time</span>" : <span class="hljs-value"><span class="hljs-number">123443</span>     //时间戳<br><span class="hljs-comment line-number">4.</span></span>},...]<br></code></pre></div><div id="wmd-preview-section-footnotes" class="preview-content"></div></div></body></html>
